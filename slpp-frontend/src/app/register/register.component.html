@@ -1,0 +1,59 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="card shadow" style="width: 600px;">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-4">Create Account</h3>
+
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email"
+                   [(ngModel)]="user.email" name="email" required placeholder="you@example.com" />
+          </div>
+          <div class="col-md-6">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName"
+                   [(ngModel)]="user.fullName" name="fullName" required placeholder="John Doe" />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob"
+                   [(ngModel)]="user.dateOfBirth" name="dateOfBirth" required />
+          </div>
+          <div class="col-md-6">
+            <label for="bioId" class="form-label">Biometric ID</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="bioId"
+                     [(ngModel)]="user.biometricId" name="biometricId" required placeholder="K1YL8VA2HG" />
+              <button type="button" class="btn btn-outline-secondary" (click)="toggleScanner()">📷</button>
+            </div>
+          </div>
+        </div>
+
+        <!--QR Scanner -->
+        <div *ngIf="showScanner" class="mb-3 text-center">
+          <zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+          <button type="button" class="btn btn-danger mt-2" (click)="toggleScanner()">Close Scanner</button>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password"
+                 [(ngModel)]="user.password" name="password" required placeholder="********" />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100" [disabled]="registerForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'Registering...' : 'Register' }}
+        </button>
+      </form>
+
+      <div class="text-center mt-3">
+        <span>Already have an account? </span>
+        <a routerLink="/login" class="text-decoration-none">Login</a>
+      </div>
+    </div>
+  </div>
+</div>

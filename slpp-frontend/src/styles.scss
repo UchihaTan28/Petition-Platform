@@ -1,0 +1,180 @@
+@use 'sass:color';
+
+
+
+//Default Light Mode
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+// Dark Mode Styles
+body.dark-mode {
+  background-color: #121212 !important;  // Dark background
+  color: #e0e0e0 !important;            // Light text 
+}
+
+// Form Adjustments in Dark Mode
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #1e1e1e !important; // Dark input fields
+  color: #e0e0e0 !important;           // Light text
+  border-color: #555 !important;   
+}
+
+// Button Adjustments in Dark Mode
+body.dark-mode button {
+  background-color: #333 !important;
+  color: #e0e0e0 !important;
+  border-color: #555 !important;
+}
+// Card & Form Background
+body.dark-mode .card {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+
+// Links in Dark Mode
+body.dark-mode a {
+  color: #90caf9 !important;
+}
+
+body.dark-mode .text-danger {
+  color: #ef5350 !important;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.card {
+  background-color: var(--card-bg-color);
+  color: var(--text-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+
+
+// Variables
+$primary-color: #007BFF;
+$secondary-color: #6C757D;
+$success-color: #28A745;
+$danger-color: #DC3545;
+$background-color: #F8F9FA;
+$text-color: #212529;
+$card-bg-color: #FFFFFF;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+$font-family: 'Poppins', sans-serif;
+
+// Reset & Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+.word-cloud-container {
+  width: 100%;
+  height: 60vh;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .word-cloud-container {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .word-cloud-container {
+    height: 30vh;
+  }
+}
+
+
+// Utility Classes
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background-color: $card-bg-color;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 15px $shadow-color;
+  padding: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: $border-radius;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.btn-primary {
+    background-color: $primary-color;
+    color: #fff;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: -10%);
+
+    }
+  }
+
+  &.btn-success {
+    background-color: $success-color;
+    color: #fff;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: -10%);
+
+    }
+  }
+
+  &.btn-danger {
+    background-color: $danger-color;
+    color: #fff;
+
+    &:hover {
+      background-color: color.adjust($danger-color, $lightness: -10%);
+
+    }
+  }
+
+  &.btn-secondary {
+    background-color: $secondary-color;
+    color: #fff;
+
+    &:hover {
+      background-color: color.adjust($secondary-color, $lightness: -10%);
+
+    }
+  }
+}

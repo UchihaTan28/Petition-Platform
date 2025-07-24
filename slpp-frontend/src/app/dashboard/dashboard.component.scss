@@ -1,0 +1,35 @@
+
+.petitioner-dashboard {
+  background-color: $background-color;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: $primary-color;
+  }
+
+  .btn {
+    margin-bottom: 10px;
+  }
+
+  .card {
+    border-radius: $border-radius;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px $shadow-color;
+  }
+
+  .badge {
+    padding: 5px 10px;
+    border-radius: $border-radius;
+
+    &.bg-success {
+      background-color: $success-color;
+      color: white;
+    }
+
+    &.bg-secondary {
+      background-color: $secondary-color;
+      color: white;
+    }
+  }
+}

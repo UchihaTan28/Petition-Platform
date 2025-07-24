@@ -1,0 +1,42 @@
+
+.register-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+  
+    .card {
+      width: 600px;
+      padding: 30px;
+      border-radius: $border-radius;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  
+      h3 {
+        font-weight: bold;
+        color: $primary-color;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+  
+      input {
+        border-radius: $border-radius;
+        padding: 10px;
+      }
+  
+      .btn-success {
+        width: 100%;
+        margin-top: 10px;
+      }
+  
+      a {
+        color: $primary-color;
+        text-decoration: none;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  

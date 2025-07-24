@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Admin Dashboard (Petitions Committee)</h2>
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
+  
+  <div class="mb-3 d-flex align-items-center">
+    <label class="me-2"><strong>Signature Threshold:</strong></label>
+    <input type="number" [(ngModel)]="threshold" class="form-control w-auto" />
+    <button (click)="setThreshold()" class="btn btn-primary ms-2">Update Threshold</button>
+    <button (click)="getThreshold()" class="btn btn-info ms-2">Check Current Threshold</button>
+  </div>
+
+  <!--Chart Visualization -->
+  <div class="my-4">
+    <canvas baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType">
+    </canvas>
+  </div>
+
+  
+
+  <!-- Table -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Signatures</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--  -->
+      <tr *ngFor="let pet of petitions">
+        <td>{{ pet.title }}</td>
+        <td>{{ pet.status }}</td>
+        <td>{{ pet.signatures }}</td>
+        <td>
+        <!-- evaluate  -->
+          <button class="btn btn-warning" (click)="onEvaluateClick(pet)">Evaluate</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+
+<!--app-word-cloud [words]="wordCloudData"></app-word-cloud-->
+<!-- Word Cloud Section -->
+<div class="my-4">
+  <h4>Popular Petition Topics</h4>
+  <div class="word-cloud-container">
+    <app-word-cloud [words]="wordCloudData"></app-word-cloud>
+  </div>
+</div>
+
+<!-- Response Modal -->
+<div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="responseModalLabel">Provide Response Summary</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <textarea [(ngModel)]="responseInput" class="form-control" placeholder="Enter your response summary"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="submitResponse()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Petitioner Dashboard</h2>
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- Petition Button + Form -->
+  <button class="btn btn-success mb-3" (click)="toggleCreateForm()">
+    {{ showCreateForm ? 'Cancel' : 'Create New Petition' }}
+  </button>
+
+  <!-- Petition Form (shown if showCreateForm is true) -->
+  <div *ngIf="showCreateForm" class="card mb-4 p-3">
+    <h5>Create a New Petition</h5>
+    <form (ngSubmit)="submitNewPetition()" #createPetForm="ngForm">
+      
+      <div class="mb-3">
+        <label for="petitionTitle" class="form-label">Title</label>
+        <input
+          type="text"
+          id="petitionTitle"
+          class="form-control"
+          [(ngModel)]="newPetition.title"
+          name="title"
+          required
+        />
+      </div>
+      <!-- Text Field -->
+      <div class="mb-3">
+        <label for="petitionText" class="form-label">Text</label>
+        <textarea
+          id="petitionText"
+          class="form-control"
+          rows="3"
+          [(ngModel)]="newPetition.text"
+          name="text"
+          required
+        ></textarea>
+      </div>
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="createPetForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+
+  <!-- Table of Petitions -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Active Petitions</h4>
+    </div>
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Signatures</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pet of petitions">
+            <td>{{ pet.title }}</td>
+            <td>
+              <span
+                class="badge"
+                [class.bg-success]="pet.status === 'open'"
+                [class.bg-secondary]="pet.status === 'closed'"
+              >
+                {{ pet.status }}
+              </span>
+            </td>
+            <td>{{ pet.signatures }}</td>
+            <td>
+              <button
+                class="btn btn-sm btn-outline-primary me-2"
+                *ngIf="pet.status === 'open'"
+                (click)="signPetition(pet.id)"
+              >
+                Sign
+              </button>
+              <button
+                class="btn btn-sm btn-outline-info"
+                (click)="viewPetition(pet.id)"
+              >
+                View
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Petition Details Modal -->
+<div
+  class="modal"
+  tabindex="-1"
+  [class.show]="showModal"
+  [style.display]="showModal ? 'block' : 'none'"
+  aria-hidden="!showModal"
+>
+  <div class="modal-dialog">
+    <div class="modal-content" *ngIf="selectedPetition">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ selectedPetition.title }}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Petition Text:</strong> {{ selectedPetition.text }}</p>
+        <p><strong>Signatures:</strong> {{ selectedPetition.signatures }}</p>
+        <p><strong>Status:</strong> {{ selectedPetition.status }}</p>
+        <p *ngIf="selectedPetition.response">
+          <strong>Response:</strong> {{ selectedPetition.response }}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

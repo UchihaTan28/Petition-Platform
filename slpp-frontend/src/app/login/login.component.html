@@ -1,0 +1,55 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="card shadow-sm" style="width: 400px;">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-4">Sign In</h3>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="mb-3">
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            [(ngModel)]="credentials.email"
+            name="email"
+            required
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            [(ngModel)]="credentials.password"
+            name="password"
+            required
+            placeholder="********"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
+      </form>
+
+      <div class="text-center">
+        <span>Don't have an account?</span>
+        <a routerLink="/register" class="text-decoration-none">Register</a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- Darkmode toggle -->
+<button class="btn btn-outline-secondary" (click)="toggleDarkMode()">
+  <span *ngIf="isDarkMode"> Dark Mode</span>
+  <span *ngIf="!isDarkMode"> Light Mode</span>
+</button>

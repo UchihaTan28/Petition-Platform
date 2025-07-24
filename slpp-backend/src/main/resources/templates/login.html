@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Login to SLPP</h1>
+<form action="#" method="post" th:action="@{/api/users/login}" th:object="${user}">
+    <label>Email: <input type="email" th:field="*{email}" /></label><br/>
+    <label>Password: <input type="password" th:field="*{password}" /></label><br/>
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
