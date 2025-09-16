@@ -1,4 +1,4 @@
-# SLPP – Shangri-La Petition Platform
+# Petition Platform
 
 A secure web-based platform to enable citizens to file and track petitions, with an integrated committee dashboard for evaluation by Admin, analytics, and publishing. Both Admin dashboard and Citizens dashboard have different views.
 
