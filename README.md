@@ -32,4 +32,9 @@ A secure web-based platform to enable citizens to file and track petitions, with
 ```bash
 cd slpp-backend
 ./mvnw spring-boot:run
- 
+```
+
+### Admin Credentials
+email-id: admin@petition.parliament.sr
+password: 2025%shangrila
+
