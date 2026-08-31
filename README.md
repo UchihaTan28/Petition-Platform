@@ -40,7 +40,7 @@ password: 2025%shangrila
 
 ### Valid BIOIDS randomly gen
 
-## On registration page, for new registrations, valid ids (available for registry) must be one of these.
+#### On registration page, for new registrations, valid ids (available for registry) must be one of these.
 
 K1YL8VA2HG
 7DMPYAZAP2
